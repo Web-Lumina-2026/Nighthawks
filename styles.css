@@ -708,3 +708,124 @@ body::before {
     animation: none !important;
   }
 }
+/* ===== BITEVERSE: VISIBLE 3D BACKGROUND ===== */
+
+body {
+  background:
+    radial-gradient(ellipse at 15% 15%, #ffb34738, transparent 32%),
+    radial-gradient(ellipse at 85% 40%, #ff603522, transparent 35%),
+    radial-gradient(ellipse at 50% 90%, #f4bd6430, transparent 40%),
+    #f8f4eb !important;
+}
+
+.hero-art {
+  isolation: isolate;
+}
+
+.hero-art::before {
+  content: "";
+  position: absolute;
+  width: 90%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: conic-gradient(
+    transparent,
+    #ff6b3540,
+    transparent,
+    #ffbd5245,
+    transparent
+  );
+  filter: blur(8px);
+  box-shadow: 0 0 60px #ff8b3530;
+  animation: bv-orbit-glow 12s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes bv-orbit-glow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===== BRIGHTER MOZZARELLA CHEESE PULL ===== */
+
+.product:has(img[data-name="Margherita Pizza"])
+.food-image {
+  overflow: visible !important;
+  isolation: isolate;
+}
+
+.product:has(img[data-name="Margherita Pizza"])
+.food-image::after {
+  content: "";
+  position: absolute;
+  z-index: 6;
+  left: 35%;
+  bottom: 0;
+  width: 38%;
+  height: 65%;
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      177deg,
+      transparent 0 8%,
+      #fffde7 10%,
+      #ffe477 18%,
+      #ffbd36 28%,
+      transparent 34%
+    ) 0 0 / 18% 100% no-repeat,
+
+    linear-gradient(
+      183deg,
+      transparent 0 3%,
+      #fffef0 5%,
+      #ffed9b 13%,
+      #ffca43 23%,
+      #f09d1b 31%,
+      transparent 36%
+    ) 30% 0 / 22% 100% no-repeat,
+
+    linear-gradient(
+      178deg,
+      transparent 0 10%,
+      #fffbdc 12%,
+      #ffdf6b 21%,
+      #f6ad23 31%,
+      transparent 38%
+    ) 62% 0 / 18% 100% no-repeat,
+
+    linear-gradient(
+      185deg,
+      transparent 0 5%,
+      #fffde7 7%,
+      #ffdc63 16%,
+      #f4a51e 26%,
+      transparent 33%
+    ) 88% 0 / 12% 100% no-repeat;
+
+  filter:
+    drop-shadow(0 0 4px #ffd65a)
+    drop-shadow(0 3px 4px #69370070);
+
+  transform-origin: top center;
+  animation: bv-cheese-realistic 1.8s ease-in-out infinite;
+}
+
+@keyframes bv-cheese-realistic {
+  0%, 100% {
+    transform: scaleY(.8) translateY(3px);
+  }
+
+  50% {
+    transform: scaleY(1.2) translateY(-5px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-art::before,
+  .product:has(img[data-name="Margherita Pizza"])
+  .food-image::after {
+    animation: none !important;
+  }
+}
