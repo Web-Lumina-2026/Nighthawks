@@ -200,3 +200,172 @@
     transition-duration: 0.01ms !important;
   }
 }
+/* =====================================
+   BITEVERSE — 3D PIZZA CHEESE PULL
+   ===================================== */
+
+/* Find the Margherita Pizza card */
+.product:has(img[data-name="Margherita Pizza"]) {
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
+  border-radius: 18px;
+  box-shadow:
+    0 12px 28px rgba(80, 35, 10, 0.12),
+    0 0 0 rgba(255, 145, 40, 0);
+  transition:
+    transform 0.45s ease,
+    box-shadow 0.45s ease;
+}
+
+/* Give the pizza image its own 3D space */
+.product:has(img[data-name="Margherita Pizza"])
+.food-image {
+  position: relative;
+  overflow: hidden;
+  perspective: 900px;
+  border-radius: 16px 16px 0 0;
+  isolation: isolate;
+}
+
+/* Make the pizza look raised and delicious */
+.product:has(img[data-name="Margherita Pizza"])
+.food-image img {
+  position: relative;
+  z-index: 0;
+  transform: scale(1.02) rotateZ(-1deg);
+  filter: saturate(1.12) contrast(1.04);
+  transition:
+    transform 0.6s cubic-bezier(.2,.8,.2,1),
+    filter 0.4s ease;
+}
+
+/* Golden cheese strands */
+.product:has(img[data-name="Margherita Pizza"])
+.food-image::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  left: 38%;
+  bottom: 0;
+  width: 34%;
+  height: 55%;
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      176deg,
+      transparent 0 17%,
+      #fff0a0 18%,
+      #ffd34e 23%,
+      #ffbd24 28%,
+      transparent 32%
+    ) 0 0 / 27% 100% no-repeat,
+
+    linear-gradient(
+      183deg,
+      transparent 0 8%,
+      #fff2a5 9%,
+      #ffcf43 15%,
+      #f8a91a 21%,
+      transparent 25%
+    ) 34% 0 / 25% 100% no-repeat,
+
+    linear-gradient(
+      177deg,
+      transparent 0 23%,
+      #fff0a0 24%,
+      #ffc938 30%,
+      #f4a51c 36%,
+      transparent 40%
+    ) 68% 0 / 24% 100% no-repeat;
+
+  filter: drop-shadow(0 2px 3px rgba(115, 57, 0, 0.25));
+  transform-origin: top center;
+  animation: bv-cheese-stretch 2.6s ease-in-out infinite;
+}
+
+/* Floating cheese-pull label */
+.product:has(img[data-name="Margherita Pizza"])
+.food-image::before {
+  content: "🧀 CHEESE PULL";
+  position: absolute;
+  z-index: 4;
+  right: 9px;
+  bottom: 10px;
+  padding: 7px 10px;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #ffb52e, #ff7536);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  box-shadow: 0 5px 18px rgba(255, 116, 30, 0.35);
+  animation: bv-cheese-badge 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Lift the entire pizza card */
+.product:has(img[data-name="Margherita Pizza"]):hover {
+  transform: translateY(-9px) rotateX(3deg) scale(1.015);
+  box-shadow:
+    0 25px 45px rgba(80, 35, 10, 0.17),
+    0 0 25px rgba(255, 153, 40, 0.12);
+}
+
+/* Zoom into the pizza */
+.product:has(img[data-name="Margherita Pizza"]):hover
+.food-image img {
+  transform: scale(1.12) rotateZ(1deg);
+  filter: saturate(1.22) contrast(1.07);
+}
+
+/* Cheese stretches and relaxes */
+@keyframes bv-cheese-stretch {
+  0%, 100% {
+    transform: scaleY(0.78) translateY(4px);
+    opacity: 0.82;
+  }
+
+  50% {
+    transform: scaleY(1.12) translateY(-3px);
+    opacity: 1;
+  }
+}
+
+/* Subtle glowing badge */
+@keyframes bv-cheese-badge {
+  0%, 100% {
+    transform: translateY(0);
+    box-shadow: 0 5px 15px rgba(255, 116, 30, 0.28);
+  }
+
+  50% {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 23px rgba(255, 116, 30, 0.45);
+  }
+}
+
+/* Mobile-friendly pizza presentation */
+@media (max-width: 768px) {
+  .product:has(img[data-name="Margherita Pizza"])
+  .food-image {
+    overflow: hidden;
+  }
+
+  .product:has(img[data-name="Margherita Pizza"])
+  .food-image::before {
+    font-size: 8px;
+    padding: 6px 8px;
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .product:has(img[data-name="Margherita Pizza"])
+  .food-image::before,
+  .product:has(img[data-name="Margherita Pizza"])
+  .food-image::after {
+    animation: none;
+  }
+}
