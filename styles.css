@@ -369,3 +369,342 @@
     animation: none;
   }
 }
+/* =========================================
+   BITEVERSE IMMERSIVE 3D EXPERIENCE
+   Pizza pop-out + cheese pull + 3D ambience
+   ========================================= */
+
+/* FUTURISTIC DEPTH FOR THE ENTIRE WEBSITE */
+
+body {
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(
+      ellipse at 12% 12%,
+      rgba(255, 170, 75, 0.17),
+      transparent 35%
+    ),
+    radial-gradient(
+      ellipse at 88% 35%,
+      rgba(255, 105, 65, 0.12),
+      transparent 38%
+    ),
+    radial-gradient(
+      ellipse at 50% 80%,
+      rgba(235, 194, 120, 0.15),
+      transparent 40%
+    ),
+    #f8f4eb;
+}
+
+/* Ambient floating background lights */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      circle at 15% 25%,
+      rgba(255, 173, 64, 0.17) 0 2px,
+      transparent 4px
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(255, 110, 55, 0.16) 0 3px,
+      transparent 5px
+    ),
+    radial-gradient(
+      circle at 75% 75%,
+      rgba(255, 190, 90, 0.18) 0 2px,
+      transparent 5px
+    );
+  background-size: 180px 180px, 230px 230px, 200px 200px;
+  animation: bv-ambient-drift 18s linear infinite;
+}
+
+/* Give major sections a little depth */
+
+.hero,
+.categories,
+.menu-section,
+.offers-section,
+.club-section {
+  transform-style: preserve-3d;
+}
+
+.hero-art {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+/* =========================================
+   PIZZA: POP OUT OF ITS IMAGE
+   ========================================= */
+
+.product:has(img[data-name="Margherita Pizza"]) {
+  position: relative;
+  z-index: 2;
+  isolation: isolate;
+  transform-style: preserve-3d;
+  border-radius: 22px;
+  overflow: visible !important;
+  background: linear-gradient(145deg, #fffdf7, #fff0d8);
+  box-shadow:
+    0 18px 35px rgba(92, 47, 17, 0.13),
+    0 0 35px rgba(255, 151, 42, 0.12);
+  transition:
+    transform 0.55s cubic-bezier(.2,.8,.2,1),
+    box-shadow 0.55s ease;
+}
+
+/* The photo frame becomes a 3D stage */
+
+.product:has(img[data-name="Margherita Pizza"])
+.food-image {
+  position: relative;
+  overflow: visible !important;
+  isolation: isolate;
+  perspective: 1000px;
+  border-radius: 20px 20px 12px 12px;
+  background:
+    radial-gradient(
+      ellipse at center,
+      #ffe1a2,
+      #f6c77c 65%,
+      #eaa956
+    );
+}
+
+/* The pizza photo lifts forward */
+
+.product:has(img[data-name="Margherita Pizza"])
+.food-image img {
+  position: relative;
+  z-index: 3;
+  transform-origin: 55% 65%;
+  transform: translateZ(35px) rotate(-3deg) scale(1.04);
+  filter:
+    saturate(1.18)
+    contrast(1.06)
+    drop-shadow(0 16px 12px rgba(82, 37, 8, 0.24));
+  animation: bv-pizza-float 4s ease-in-out infinite;
+  transition:
+    transform 0.6s cubic-bezier(.2,.8,.2,1),
+    filter 0.5s ease;
+}
+
+/* Golden cheese strands appear over the lower image */
+
+.product:has(img[data-name="Margherita Pizza"])
+.food-image::after {
+  content: "";
+  position: absolute;
+  z-index: 5;
+  left: 35%;
+  bottom: -3%;
+  width: 42%;
+  height: 48%;
+  pointer-events: none;
+  transform-origin: top center;
+
+  background:
+    linear-gradient(
+      176deg,
+      transparent 0 8%,
+      #fff5bd 10%,
+      #ffd65a 17%,
+      #f7a91b 23%,
+      transparent 30%
+    ) 0% 0% / 20% 100% no-repeat,
+
+    linear-gradient(
+      182deg,
+      transparent 0 5%,
+      #fff8ce 7%,
+      #ffe26b 13%,
+      #ffbf30 20%,
+      #e99a17 25%,
+      transparent 33%
+    ) 28% 0% / 24% 100% no-repeat,
+
+    linear-gradient(
+      178deg,
+      transparent 0 12%,
+      #fff4b5 14%,
+      #ffd34f 22%,
+      #f4a21a 28%,
+      transparent 35%
+    ) 58% 0% / 20% 100% no-repeat,
+
+    linear-gradient(
+      185deg,
+      transparent 0 7%,
+      #fff0a0 9%,
+      #ffc83e 16%,
+      transparent 25%
+    ) 85% 0% / 15% 100% no-repeat;
+
+  filter:
+    drop-shadow(0 3px 3px rgba(120, 65, 0, 0.25))
+    drop-shadow(0 0 8px rgba(255, 199, 60, 0.25));
+
+  animation: bv-mozzarella-pull 2.2s ease-in-out infinite;
+}
+
+/* Premium cheese-pull badge */
+
+.product:has(img[data-name="Margherita Pizza"])
+.food-image::before {
+  content: "✦ MELTED MOZZARELLA";
+  position: absolute;
+  z-index: 7;
+  top: 12px;
+  right: 10px;
+  padding: 9px 12px;
+  border: 1px solid rgba(255,255,255,.45);
+  border-radius: 30px;
+  color: white;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, #ffb52e, #ff6d35);
+  box-shadow:
+    0 8px 22px rgba(210, 91, 20, .3),
+    inset 0 1px 0 rgba(255,255,255,.4);
+  animation: bv-cheese-label 2.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Pizza card rises from the page */
+
+.product:has(img[data-name="Margherita Pizza"]):hover {
+  z-index: 10;
+  transform: translateY(-12px) rotateX(4deg) scale(1.025);
+  box-shadow:
+    0 35px 60px rgba(92, 47, 17, .20),
+    0 0 35px rgba(255, 151, 42, .22);
+}
+
+/* Make the pizza feel closer on hover */
+
+.product:has(img[data-name="Margherita Pizza"]):hover
+.food-image img {
+  transform: translateZ(65px) translateY(-8px)
+    rotate(-1deg) scale(1.13);
+  filter:
+    saturate(1.25)
+    contrast(1.08)
+    drop-shadow(0 25px 18px rgba(82, 37, 8, .3));
+}
+
+/* Cheese stretches out and relaxes */
+
+@keyframes bv-mozzarella-pull {
+  0%, 100% {
+    transform: scaleY(.78) translateY(3px) rotate(-1deg);
+    opacity: .86;
+  }
+
+  50% {
+    transform: scaleY(1.18) translateY(-4px) rotate(1deg);
+    opacity: 1;
+  }
+}
+
+/* Pizza floating in 3D */
+
+@keyframes bv-pizza-float {
+  0%, 100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 0 -7px;
+  }
+}
+
+/* Cheese badge glow */
+
+@keyframes bv-cheese-label {
+  0%, 100% {
+    transform: translateY(0);
+    box-shadow: 0 8px 22px rgba(210, 91, 20, .3);
+  }
+
+  50% {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(255, 117, 35, .45);
+  }
+}
+
+/* Ambient background movement */
+
+@keyframes bv-ambient-drift {
+  0% {
+    background-position: 0 0, 0 0, 0 0;
+  }
+
+  50% {
+    background-position: 35px 45px, -25px 35px, 30px -20px;
+  }
+
+  100% {
+    background-position: 0 0, 0 0, 0 0;
+  }
+}
+
+/* Other menu cards get richer depth */
+
+.product:not(:has(img[data-name="Margherita Pizza"])) {
+  box-shadow:
+    0 10px 25px rgba(45, 34, 20, .08),
+    0 2px 5px rgba(45, 34, 20, .04);
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+
+@media (hover: hover) {
+  .product:not(:has(img[data-name="Margherita Pizza"])):hover {
+    transform: translateY(-7px) rotateX(2deg);
+    box-shadow: 0 22px 42px rgba(45, 34, 20, .14);
+  }
+}
+
+/* Keep the effects comfortable on small screens */
+
+@media (max-width: 768px) {
+  .product:has(img[data-name="Margherita Pizza"]) {
+    margin-top: 8px;
+    margin-bottom: 12px;
+  }
+
+  .product:has(img[data-name="Margherita Pizza"])
+  .food-image::before {
+    top: 8px;
+    right: 7px;
+    font-size: 8px;
+    padding: 7px 9px;
+  }
+
+  .product:has(img[data-name="Margherita Pizza"])
+  .food-image img {
+    animation-duration: 3.5s;
+  }
+}
+
+/* Respect accessibility settings */
+
+@media (prefers-reduced-motion: reduce) {
+  body::before,
+  .product:has(img[data-name="Margherita Pizza"])
+  .food-image img,
+  .product:has(img[data-name="Margherita Pizza"])
+  .food-image::before,
+  .product:has(img[data-name="Margherita Pizza"])
+  .food-image::after {
+    animation: none !important;
+  }
+}
