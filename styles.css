@@ -829,3 +829,1136 @@ body {
     animation: none !important;
   }
 }
+/* =========================================
+   BITEVERSE CYBER CAFE — BLACK 3D EDITION
+========================================= */
+
+:root {
+  --cream: #090909;
+  --paper: #141414;
+  --ink: #f8f8f8;
+  --muted: #a5a5a5;
+  --orange: #ff6b22;
+  --line: #292929;
+  --green: #183b24;
+  --yellow: #ffc247;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: #080808;
+}
+
+body {
+  color: #f7f7f7 !important;
+  background:
+    radial-gradient(ellipse at 10% 10%, #ff6b221c, transparent 30%),
+    radial-gradient(ellipse at 90% 35%, #ff3d0012, transparent 32%),
+    radial-gradient(ellipse at 50% 80%, #ff9d0010, transparent 35%),
+    #080808 !important;
+  overflow-x: hidden;
+}
+
+/* Futuristic animated atmosphere */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  background-image:
+    linear-gradient(#ffffff08 1px, transparent 1px),
+    linear-gradient(90deg, #ffffff08 1px, transparent 1px);
+
+  background-size: 55px 55px;
+
+  mask-image: linear-gradient(
+    to bottom,
+    black,
+    transparent 90%
+  );
+
+  animation: bv-grid-drift 25s linear infinite;
+}
+
+@keyframes bv-grid-drift {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 55px 55px;
+  }
+}
+
+/* Black glass header */
+
+.announcement {
+  color: #ffc247 !important;
+  background: #111 !important;
+  border-bottom: 1px solid #ff6b2230;
+}
+
+.header {
+  background: #090909eF !important;
+  border-bottom: 1px solid #ffffff14 !important;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.brand strong,
+.header nav a,
+.icon,
+.cart {
+  color: #f5f5f5 !important;
+}
+
+.brand b {
+  color: #ff6b22 !important;
+}
+
+.header nav a:hover {
+  color: #ff8b48 !important;
+}
+
+.btn.orange,
+.add {
+  color: #080808 !important;
+  background: linear-gradient(
+    135deg,
+    #ffb347,
+    #ff6b22 55%,
+    #ff3d00
+  ) !important;
+
+  border: 1px solid #ffb347 !important;
+
+  box-shadow: 0 0 24px #ff6b222b;
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease;
+}
+
+.btn.orange:hover,
+.add:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 35px #ff6b2260;
+}
+
+.btn.dark,
+.cart {
+  background: #181818 !important;
+  color: white !important;
+  border: 1px solid #383838 !important;
+}
+
+.btn.dark:hover,
+.cart:hover {
+  border-color: #ff6b22 !important;
+}
+
+/* Hero section */
+
+.hero {
+  position: relative;
+  perspective: 1200px;
+}
+
+.hero h1 {
+  color: #fff !important;
+  letter-spacing: -2px;
+}
+
+.hero h1 span,
+.section-head h2 span,
+.bot-copy h2 span,
+.club h2 span,
+.about h2 span,
+.hours h2 span,
+.feedback h2 span {
+  color: #ff813b !important;
+  text-shadow: 0 0 30px #ff6b2225;
+}
+
+.hero p,
+.section-head p,
+.bot-copy p,
+.club p,
+.about p,
+.hours p,
+.feedback p {
+  color: #b7b7b7 !important;
+}
+
+.eyebrow {
+  color: #ff984f !important;
+}
+
+/* 3D pizza display */
+
+.hero-art {
+  position: relative;
+  isolation: isolate;
+  perspective: 1000px;
+}
+
+.hero-art::before {
+  content: "";
+  position: absolute;
+
+  width: 90%;
+  aspect-ratio: 1;
+
+  left: 5%;
+  top: 5%;
+
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    #ff7b251f,
+    #ff4b0010 45%,
+    transparent 70%
+  );
+
+  box-shadow:
+    0 0 70px #ff6b2220,
+    0 0 140px #ff3d0012;
+
+  animation: bv-pizza-aura 4s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.hero-art .orbit {
+  border-color: #ff8b4870 !important;
+  box-shadow: 0 0 25px #ff6b222b;
+}
+
+.hero-img {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  height: auto;
+
+  object-fit: cover;
+  border-radius: 50%;
+
+  border: 3px solid #ff9c4935;
+
+  filter:
+    drop-shadow(0 20px 35px #000)
+    drop-shadow(0 0 25px #ff6b2225);
+
+  transform: rotate(-5deg) translateZ(30px);
+
+  animation: bv-pizza-float 5s ease-in-out infinite;
+
+  transition: filter .3s ease;
+}
+
+.hero-art:hover .hero-img {
+  filter:
+    drop-shadow(0 25px 45px #000)
+    drop-shadow(0 0 40px #ff6b2250);
+}
+
+@keyframes bv-pizza-float {
+  0%, 100% {
+    transform: rotate(-5deg) translateY(0) translateZ(30px);
+  }
+
+  50% {
+    transform: rotate(-2deg) translateY(-13px) translateZ(55px);
+  }
+}
+
+@keyframes bv-pizza-aura {
+  from {
+    transform: scale(.93);
+    opacity: .65;
+  }
+
+  to {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+/* Floating glass labels */
+
+.float {
+  z-index: 3;
+
+  background: #171717eF !important;
+  color: #fff !important;
+
+  border: 1px solid #ff8b4845 !important;
+  border-radius: 16px;
+
+  box-shadow:
+    0 15px 35px #0009,
+    0 0 25px #ff6b2210;
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  animation: bv-label-float 4s ease-in-out infinite;
+}
+
+.float-two {
+  animation-delay: -2s;
+}
+
+@keyframes bv-label-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+.sticker {
+  background: linear-gradient(
+    135deg,
+    #ffb347,
+    #ff5c1a
+  ) !important;
+
+  color: #080808 !important;
+
+  box-shadow: 0 0 30px #ff6b2240;
+  transform: rotate(8deg);
+}
+
+/* Dark 3D cards */
+
+.category-grid button,
+.product,
+.offer,
+.saver,
+.search,
+.diet button,
+.chips button,
+.bot-result,
+.member-card,
+.hours-list,
+.feedback form,
+.modal {
+  background: linear-gradient(
+    145deg,
+    #1b1b1b,
+    #101010
+  ) !important;
+
+  color: #f5f5f5 !important;
+
+  border: 1px solid #ffffff16 !important;
+  box-shadow: 0 12px 30px #0003;
+}
+
+.category-grid button,
+.product,
+.offer {
+  transition:
+    transform .3s ease,
+    border-color .3s ease,
+    box-shadow .3s ease;
+}
+
+.category-grid button:hover,
+.product:hover,
+.offer:hover {
+  transform: translateY(-6px);
+  border-color: #ff6b2260 !important;
+
+  box-shadow:
+    0 18px 35px #0007,
+    0 0 25px #ff6b2210;
+}
+
+.category-grid button b,
+.product h3,
+.offer h3,
+.member-card h3 {
+  color: #fff !important;
+}
+
+.product p,
+.offer p,
+.product .prep,
+.note,
+.demo {
+  color: #a8a8a8 !important;
+}
+
+.food-image {
+  background: #101010;
+}
+
+.food-image img {
+  transition: transform .4s ease;
+}
+
+.product:hover .food-image img {
+  transform: scale(1.06);
+}
+
+.search input,
+input,
+textarea,
+select {
+  color: #fff;
+}
+
+.search input,
+.feedback input,
+.feedback textarea,
+.feedback select,
+.promo input {
+  background: #090909 !important;
+  border: 1px solid #333 !important;
+  border-radius: 9px;
+}
+
+.search input::placeholder,
+input::placeholder,
+textarea::placeholder {
+  color: #888;
+}
+
+.diet button,
+.chips button {
+  border-color: #333 !important;
+}
+
+.diet button.selected,
+.chips button.active {
+  background: #ff6b22 !important;
+  color: #080808 !important;
+  border-color: #ff6b22 !important;
+}
+
+/* Offers */
+
+.offers {
+  background:
+    radial-gradient(ellipse at 50% 0%, #ff6b2219, transparent 60%),
+    #0c0c0c !important;
+
+  border-top: 1px solid #ffffff12;
+  border-bottom: 1px solid #ffffff12;
+}
+
+.offer-main,
+.offer-yellow,
+.offer-green {
+  background: linear-gradient(
+    145deg,
+    #21140f,
+    #111
+  ) !important;
+}
+
+.offer-yellow {
+  border-color: #ffb34750 !important;
+}
+
+.offer-green {
+  border-color: #55c87540 !important;
+}
+
+.offer .price b {
+  color: #ffb347 !important;
+}
+
+.btn.cream {
+  background: #ffb347 !important;
+  color: #111 !important;
+}
+
+/* BiteBot */
+
+.bot-visual {
+  filter: drop-shadow(0 0 30px #ff6b2218);
+}
+
+.bot-face {
+  background: linear-gradient(
+    145deg,
+    #ffb347,
+    #ff5b20
+  ) !important;
+
+  color: #111 !important;
+
+  box-shadow: 0 0 50px #ff6b2235;
+}
+
+.prompts button {
+  background: #191919 !important;
+  color: #eee !important;
+  border: 1px solid #333 !important;
+}
+
+.prompts button:hover {
+  border-color: #ff6b22 !important;
+}
+
+/* Campus club */
+
+.club {
+  background: #101010 !important;
+  border: 1px solid #ffffff12;
+  border-radius: 24px;
+  padding: 35px;
+}
+
+.member-card {
+  background: linear-gradient(
+    135deg,
+    #3b1c0d,
+    #111 65%,
+    #241006
+  ) !important;
+
+  border: 1px solid #ff9b4b55 !important;
+
+  box-shadow: 0 25px 60px #0008;
+}
+
+.member-card h3 span {
+  color: #ff974c;
+}
+
+/* Hours, feedback and about */
+
+.hours-list > div {
+  border-bottom: 1px solid #ffffff12;
+}
+/* =========================================
+   BITEVERSE CYBER CAFE — BLACK 3D EDITION
+========================================= */
+
+:root {
+  --cream: #090909;
+  --paper: #141414;
+  --ink: #f8f8f8;
+  --muted: #a5a5a5;
+  --orange: #ff6b22;
+  --line: #292929;
+  --green: #183b24;
+  --yellow: #ffc247;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: #080808;
+}
+
+body {
+  color: #f7f7f7 !important;
+  background:
+    radial-gradient(ellipse at 10% 10%, #ff6b221c, transparent 30%),
+    radial-gradient(ellipse at 90% 35%, #ff3d0012, transparent 32%),
+    radial-gradient(ellipse at 50% 80%, #ff9d0010, transparent 35%),
+    #080808 !important;
+  overflow-x: hidden;
+}
+
+/* Futuristic animated atmosphere */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  background-image:
+    linear-gradient(#ffffff08 1px, transparent 1px),
+    linear-gradient(90deg, #ffffff08 1px, transparent 1px);
+
+  background-size: 55px 55px;
+
+  mask-image: linear-gradient(
+    to bottom,
+    black,
+    transparent 90%
+  );
+
+  animation: bv-grid-drift 25s linear infinite;
+}
+
+@keyframes bv-grid-drift {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 55px 55px;
+  }
+}
+
+/* Black glass header */
+
+.announcement {
+  color: #ffc247 !important;
+  background: #111 !important;
+  border-bottom: 1px solid #ff6b2230;
+}
+
+.header {
+  background: #090909eF !important;
+  border-bottom: 1px solid #ffffff14 !important;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.brand strong,
+.header nav a,
+.icon,
+.cart {
+  color: #f5f5f5 !important;
+}
+
+.brand b {
+  color: #ff6b22 !important;
+}
+
+.header nav a:hover {
+  color: #ff8b48 !important;
+}
+
+.btn.orange,
+.add {
+  color: #080808 !important;
+  background: linear-gradient(
+    135deg,
+    #ffb347,
+    #ff6b22 55%,
+    #ff3d00
+  ) !important;
+
+  border: 1px solid #ffb347 !important;
+
+  box-shadow: 0 0 24px #ff6b222b;
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease;
+}
+
+.btn.orange:hover,
+.add:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 35px #ff6b2260;
+}
+
+.btn.dark,
+.cart {
+  background: #181818 !important;
+  color: white !important;
+  border: 1px solid #383838 !important;
+}
+
+.btn.dark:hover,
+.cart:hover {
+  border-color: #ff6b22 !important;
+}
+
+/* Hero section */
+
+.hero {
+  position: relative;
+  perspective: 1200px;
+}
+
+.hero h1 {
+  color: #fff !important;
+  letter-spacing: -2px;
+}
+
+.hero h1 span,
+.section-head h2 span,
+.bot-copy h2 span,
+.club h2 span,
+.about h2 span,
+.hours h2 span,
+.feedback h2 span {
+  color: #ff813b !important;
+  text-shadow: 0 0 30px #ff6b2225;
+}
+
+.hero p,
+.section-head p,
+.bot-copy p,
+.club p,
+.about p,
+.hours p,
+.feedback p {
+  color: #b7b7b7 !important;
+}
+
+.eyebrow {
+  color: #ff984f !important;
+}
+
+/* 3D pizza display */
+
+.hero-art {
+  position: relative;
+  isolation: isolate;
+  perspective: 1000px;
+}
+
+.hero-art::before {
+  content: "";
+  position: absolute;
+
+  width: 90%;
+  aspect-ratio: 1;
+
+  left: 5%;
+  top: 5%;
+
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    #ff7b251f,
+    #ff4b0010 45%,
+    transparent 70%
+  );
+
+  box-shadow:
+    0 0 70px #ff6b2220,
+    0 0 140px #ff3d0012;
+
+  animation: bv-pizza-aura 4s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.hero-art .orbit {
+  border-color: #ff8b4870 !important;
+  box-shadow: 0 0 25px #ff6b222b;
+}
+
+.hero-img {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  height: auto;
+
+  object-fit: cover;
+  border-radius: 50%;
+
+  border: 3px solid #ff9c4935;
+
+  filter:
+    drop-shadow(0 20px 35px #000)
+    drop-shadow(0 0 25px #ff6b2225);
+
+  transform: rotate(-5deg) translateZ(30px);
+
+  animation: bv-pizza-float 5s ease-in-out infinite;
+
+  transition: filter .3s ease;
+}
+
+.hero-art:hover .hero-img {
+  filter:
+    drop-shadow(0 25px 45px #000)
+    drop-shadow(0 0 40px #ff6b2250);
+}
+
+@keyframes bv-pizza-float {
+  0%, 100% {
+    transform: rotate(-5deg) translateY(0) translateZ(30px);
+  }
+
+  50% {
+    transform: rotate(-2deg) translateY(-13px) translateZ(55px);
+  }
+}
+
+@keyframes bv-pizza-aura {
+  from {
+    transform: scale(.93);
+    opacity: .65;
+  }
+
+  to {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+/* Floating glass labels */
+
+.float {
+  z-index: 3;
+
+  background: #171717eF !important;
+  color: #fff !important;
+
+  border: 1px solid #ff8b4845 !important;
+  border-radius: 16px;
+
+  box-shadow:
+    0 15px 35px #0009,
+    0 0 25px #ff6b2210;
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  animation: bv-label-float 4s ease-in-out infinite;
+}
+
+.float-two {
+  animation-delay: -2s;
+}
+
+@keyframes bv-label-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+.sticker {
+  background: linear-gradient(
+    135deg,
+    #ffb347,
+    #ff5c1a
+  ) !important;
+
+  color: #080808 !important;
+
+  box-shadow: 0 0 30px #ff6b2240;
+  transform: rotate(8deg);
+}
+
+/* Dark 3D cards */
+
+.category-grid button,
+.product,
+.offer,
+.saver,
+.search,
+.diet button,
+.chips button,
+.bot-result,
+.member-card,
+.hours-list,
+.feedback form,
+.modal {
+  background: linear-gradient(
+    145deg,
+    #1b1b1b,
+    #101010
+  ) !important;
+
+  color: #f5f5f5 !important;
+
+  border: 1px solid #ffffff16 !important;
+  box-shadow: 0 12px 30px #0003;
+}
+
+.category-grid button,
+.product,
+.offer {
+  transition:
+    transform .3s ease,
+    border-color .3s ease,
+    box-shadow .3s ease;
+}
+
+.category-grid button:hover,
+.product:hover,
+.offer:hover {
+  transform: translateY(-6px);
+  border-color: #ff6b2260 !important;
+
+  box-shadow:
+    0 18px 35px #0007,
+    0 0 25px #ff6b2210;
+}
+
+.category-grid button b,
+.product h3,
+.offer h3,
+.member-card h3 {
+  color: #fff !important;
+}
+
+.product p,
+.offer p,
+.product .prep,
+.note,
+.demo {
+  color: #a8a8a8 !important;
+}
+
+.food-image {
+  background: #101010;
+}
+
+.food-image img {
+  transition: transform .4s ease;
+}
+
+.product:hover .food-image img {
+  transform: scale(1.06);
+}
+
+.search input,
+input,
+textarea,
+select {
+  color: #fff;
+}
+
+.search input,
+.feedback input,
+.feedback textarea,
+.feedback select,
+.promo input {
+  background: #090909 !important;
+  border: 1px solid #333 !important;
+  border-radius: 9px;
+}
+
+.search input::placeholder,
+input::placeholder,
+textarea::placeholder {
+  color: #888;
+}
+
+.diet button,
+.chips button {
+  border-color: #333 !important;
+}
+
+.diet button.selected,
+.chips button.active {
+  background: #ff6b22 !important;
+  color: #080808 !important;
+  border-color: #ff6b22 !important;
+}
+
+/* Offers */
+
+.offers {
+  background:
+    radial-gradient(ellipse at 50% 0%, #ff6b2219, transparent 60%),
+    #0c0c0c !important;
+
+  border-top: 1px solid #ffffff12;
+  border-bottom: 1px solid #ffffff12;
+}
+
+.offer-main,
+.offer-yellow,
+.offer-green {
+  background: linear-gradient(
+    145deg,
+    #21140f,
+    #111
+  ) !important;
+}
+
+.offer-yellow {
+  border-color: #ffb34750 !important;
+}
+
+.offer-green {
+  border-color: #55c87540 !important;
+}
+
+.offer .price b {
+  color: #ffb347 !important;
+}
+
+.btn.cream {
+  background: #ffb347 !important;
+  color: #111 !important;
+}
+
+/* BiteBot */
+
+.bot-visual {
+  filter: drop-shadow(0 0 30px #ff6b2218);
+}
+
+.bot-face {
+  background: linear-gradient(
+    145deg,
+    #ffb347,
+    #ff5b20
+  ) !important;
+
+  color: #111 !important;
+
+  box-shadow: 0 0 50px #ff6b2235;
+}
+
+.prompts button {
+  background: #191919 !important;
+  color: #eee !important;
+  border: 1px solid #333 !important;
+}
+
+.prompts button:hover {
+  border-color: #ff6b22 !important;
+}
+
+/* Campus club */
+
+.club {
+  background: #101010 !important;
+  border: 1px solid #ffffff12;
+  border-radius: 24px;
+  padding: 35px;
+}
+
+.member-card {
+  background: linear-gradient(
+    135deg,
+    #3b1c0d,
+    #111 65%,
+    #241006
+  ) !important;
+
+  border: 1px solid #ff9b4b55 !important;
+
+  box-shadow: 0 25px 60px #0008;
+}
+
+.member-card h3 span {
+  color: #ff974c;
+}
+
+/* Hours, feedback and about */
+
+.hours-list > div {
+  border-bottom: 1px solid #ffffff12;
+}
+
+.feedback {
+  color: #fff;
+}
+
+.stars button {
+  color: #777;
+}
+
+.stars button.active {
+  color: #ffb347;
+}
+
+.about-img img {
+  filter: brightness(.8) contrast(1.08);
+}
+
+.stats > div {
+  border-right: 1px solid #ffffff16;
+}
+
+.stats b {
+  color: #ff984f !important;
+}
+
+/* Footer */
+
+footer {
+  background: #050505 !important;
+  color: #fff !important;
+  border-top: 1px solid #ffffff16;
+}
+
+footer p,
+footer a,
+.footer-bottom {
+  color: #a5a5a5 !important;
+}
+
+footer a:hover {
+  color: #ff984f !important;
+}
+
+/* Cart drawer and modal */
+
+.drawer {
+  background: #101010 !important;
+  color: #fff !important;
+  border-left: 1px solid #333;
+}
+
+.drawer-head {
+  border-bottom: 1px solid #333;
+}
+
+.cart-line {
+  border-bottom: 1px solid #333;
+}
+
+.cart-empty,
+.cart-items {
+  color: #fff;
+}
+
+.shade,
+.modal-shade {
+  background: #000c !important;
+  backdrop-filter: blur(6px);
+}
+
+.modal {
+  box-shadow: 0 25px 80px #000b;
+}
+
+/* Mobile adjustments */
+
+@media (max-width: 700px) {
+  .hero h1 {
+    letter-spacing: -1.5px;
+  }
+
+  .hero-art {
+    margin-top: 20px;
+  }
+
+  .hero-img {
+    transform: rotate(-3deg);
+  }
+
+  .club {
+    padding: 22px;
+  }
+
+  body::before {
+    background-size: 35px 35px;
+  }
+}
+
+/* Respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
