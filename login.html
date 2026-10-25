@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080808">
+
+  <title>Login | BiteVerse Café</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    :root {
+      --orange: #ff6b22;
+      --gold: #ffb347;
+      --black: #080808;
+      --panel: #141414;
+      --muted: #aaa;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "DM Sans", sans-serif;
+      color: white;
+      background:
+        radial-gradient(ellipse at 15% 15%, #ff6b2226, transparent 35%),
+        radial-gradient(ellipse at 85% 85%, #ff3d0018, transparent 35%),
+        #080808;
+      display: grid;
+      place-items: center;
+      overflow-x: hidden;
+      padding: 24px;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(#ffffff09 1px, transparent 1px),
+        linear-gradient(90deg, #ffffff09 1px, transparent 1px);
+      background-size: 45px 45px;
+      animation: gridMove 25s linear infinite;
+    }
+
+    @keyframes gridMove {
+      to {
+        background-position: 45px 45px;
+      }
+    }
+
+    .login-layout {
+      width: min(100%, 960px);
+      min-height: 570px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      z-index: 1;
+      background: #101010dd;
+      border: 1px solid #ffffff1b;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow:
+        0 30px 100px #000b,
+        0 0 55px #ff6b2210;
+      backdrop-filter: blur(20px);
+    }
+
+    .visual {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 35px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 45%, #ff6b2233, transparent 42%),
+        linear-gradient(145deg, #211109, #0a0a0a 75%);
+    }
+
+    .visual::before,
+    .visual::after {
+      content: "";
+      position: absolute;
+      width: 290px;
+      height: 290px;
+      border: 1px solid #ff8b4845;
+      border-radius: 50%;
+      left: 50%;
+      top: 48%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 45px #ff6b2215;
+      animation: orbit 18s linear infinite;
+    }
+
+    .visual::after {
+      width: 370px;
+      height: 370px;
+      border-style: dashed;
+      animation-direction: reverse;
+      animation-duration: 28s;
+    }
+
+    @keyframes orbit {
+      to {
+        rotate: 360deg;
+      }
+    }
+
+    .brand {
+      color: white;
+      text-decoration: none;
+      font-family: Manrope, sans-serif;
+      font-size: 23px;
+      font-weight: 800;
+      position: relative;
+      z-index: 2;
+    }
+
+    .brand span {
+      color: var(--orange);
+    }
+
+    .pizza {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      font-size: clamp(100px, 16vw, 175px);
+      filter: drop-shadow(0 25px 25px #000);
+      animation: pizzaFloat 4s ease-in-out infinite;
+    }
+
+    @keyframes pizzaFloat {
+      0%, 100% {
+        transform: translateY(0) rotate(-6deg);
+      }
+
+      50% {
+        transform: translateY(-15px) rotate(2deg);
+      }
+    }
+
+    .visual-copy {
+      position: relative;
+      z-index: 2;
+    }
+
+    .visual-copy h2 {
+      font-family: Manrope, sans-serif;
+      font-size: 32px;
+      line-height: 1.15;
+      margin: 0 0 12px;
+    }
+
+    .visual-copy h2 span {
+      color: var(--gold);
+    }
+
+    .visual-copy p {
+      color: #bbb;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .form-side {
+      padding: 42px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .back {
+      display: inline-block;
+      color: #ccc;
+      text-decoration: none;
+      margin-bottom: 34px;
+      font-size: 14px;
+    }
+
+    .back:hover {
+      color: var(--gold);
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-family: Manrope, sans-serif;
+      font-size: 34px;
+      margin: 0 0 10px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+      margin: 0 0 28px;
+    }
+
+    .field {
+      margin-bottom: 17px;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 8px;
+      color: #e9e9e9;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px 15px;
+      border-radius: 11px;
+      border: 1px solid #333;
+      background: #090909;
+      color: white;
+      outline: none;
+      font: inherit;
+      font-size: 14px;
+      transition: border-color .2s, box-shadow .2s;
+    }
+
+    input:focus {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 3px #ff6b221c;
+    }
+
+    .submit {
+      width: 100%;
+      padding: 15px;
+      margin-top: 6px;
+      border: 0;
+      border-radius: 11px;
+      background: linear-gradient(135deg, var(--gold), var(--orange));
+      color: #111;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px #ff6b2235;
+    }
+
+    .switch {
+      color: #aaa;
+      text-align: center;
+      font-size: 13px;
+      margin: 23px 0 0;
+    }
+
+    .switch button {
+      border: 0;
+      padding: 0;
+      background: none;
+      color: var(--gold);
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .notice {
+      color: #888;
+      font-size: 11px;
+      line-height: 1.6;
+      margin-top: 25px;
+    }
+
+    .status {
+      color: var(--gold);
+      font-size: 13px;
+      margin-top: 15px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 720px) {
+      body {
+        padding: 14px;
+      }
+
+      .login-layout {
+        max-width: 460px;
+        grid-template-columns: 1fr;
+        border-radius: 22px;
+      }
+
+      .visual {
+        min-height: 260px;
+        padding: 23px;
+      }
+
+      .visual::before {
+        width: 200px;
+        height: 200px;
+      }
+
+      .visual::after {
+        width: 250px;
+        height: 250px;
+      }
+
+      .pizza {
+        font-size: 95px;
+      }
+
+      .visual-copy h2 {
+        font-size: 25px;
+      }
+
+      .visual-copy p {
+        font-size: 13px;
+      }
+
+      .form-side {
+        padding: 26px 23px 30px;
+      }
+
+      .back {
+        margin-bottom: 25px;
+      }
+
+      h1 {
+        font-size: 29px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="login-layout">
+
+    <section class="visual">
+      <a class="brand" href="index.html">
+        biteverse<span>✳</span>
+      </a>
+
+      <div class="pizza" aria-label="Pizza">🍕</div>
+
+      <div class="visual-copy">
+        <h2>Your campus.<br><span>Your cravings.</span></h2>
+        <p>Your next favourite bite is waiting. Come hungry, leave happy.</p>
+      </div>
+    </section>
+
+    <section class="form-side">
+      <a class="back" href="index.html">← Back to BiteVerse</a>
+
+      <div class="eyebrow">YOUR CAMPUS CAFÉ</div>
+
+      <h1 id="heading">Welcome back.</h1>
+
+      <p class="subtitle" id="subtitle">
+        Sign in to preview your BiteVerse campus experience.
+      </p>
+
+      <form id="loginForm">
+        <div class="field" id="nameField" hidden>
+          <label for="name">Your name</label>
+          <input id="name" type="text" maxlength="60" autocomplete="name">
+        </div>
+
+        <div class="field">
+          <label for="email">College email</label>
+          <input
+            id="email"
+            type="email"
+            placeholder="you@college.edu"
+            autocomplete="email"
+            required
+          >
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <input
+            id="password"
+            type="password"
+            placeholder="Enter a demo password"
+            autocomplete="current-password"
+            minlength="4"
+            required
+          >
+        </div>
+
+        <button class="submit" id="submitButton" type="submit">
+          Continue to BiteVerse →
+        </button>
+
+        <div class="status" id="status" role="status"></div>
+      </form>
+
+      <p class="switch">
+        <span id="switchText">New to BiteVerse?</span>
+        <button type="button" id="switchMode">Create an account</button>
+      </p>
+
+      <p class="notice">
+        Demo interface only. Authentication is not connected.
+        Do not enter a real password. Real accounts require a secure
+        authentication provider or backend.
+      </p>
+    </section>
+
+  </main>
+
+  <script>
+    let registerMode = false;
+
+    const form = document.getElementById("loginForm");
+    const heading = document.getElementById("heading");
+    const subtitle = document.getElementById("subtitle");
+    const nameField = document.getElementById("nameField");
+    const nameInput = document.getElementById("name");
+    const passwordInput = document.getElementById("password");
+    const submitButton = document.getElementById("submitButton");
+    const switchText = document.getElementById("switchText");
+    const switchMode = document.getElementById("switchMode");
+    const status = document.getElementById("status");
+
+    switchMode.addEventListener("click", () => {
+      registerMode = !registerMode;
+
+      heading.textContent = registerMode
+        ? "Join the BiteVerse."
+        : "Welcome back.";
+
+      subtitle.textContent = registerMode
+        ? "Create a demo profile for your campus experience."
+        : "Sign in to preview your BiteVerse campus experience.";
+
+      nameField.hidden = !registerMode;
+      nameInput.required = registerMode;
+
+      switchText.textContent = registerMode
+        ? "Already have a profile?"
+        : "New to BiteVerse?";
+
+      switchMode.textContent = registerMode
+        ? "Sign in"
+        : "Create an account";
+
+      submitButton.textContent = registerMode
+        ? "Create demo profile →"
+        : "Continue to BiteVerse →";
+
+      passwordInput.autocomplete = registerMode
+        ? "new-password"
+        : "current-password";
+
+      status.textContent = "";
+    });
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const email = document.getElementById("email").value.trim();
+      const name = nameInput.value.trim();
+
+      if (registerMode && !name) {
+        status.textContent = "Please enter your name.";
+        return;
+      }
+
+      /*
+        Front-end demonstration only.
+        This does not authenticate users or create real accounts.
+        Do not save or transmit the password.
+      */
+
+      status.textContent = registerMode
+        ? "Demo profile preview ready! Real registration is not connected."
+        : "Welcome to BiteVerse! Demo sign-in only; no account was authenticated.";
+
+      if (registerMode) {
+        heading.textContent = "You're on the menu, " + name + "!";
+        subtitle.textContent = "Your BiteVerse demo profile is ready to preview.";
+      } else {
+        heading.textContent = "Welcome to BiteVerse!";
+        subtitle.textContent = "You're viewing the demo experience for " + email + ".";
+      }
+
+      passwordInput.value = "";
+    });
+  </script>
+</body>
+</html>
